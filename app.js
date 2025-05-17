@@ -1,4 +1,8 @@
 import express from "express";
+
+import dotenv from "dotenv";
+dotenv.config();
+
 // import {
 //   getExchangeConvert,
 //   getExchangeCurrentcy,
@@ -8,7 +12,7 @@ import ExchangeRouter from "./Routes/ExchangeRoutes.js";
 import { getCurrencyData } from "./services/currencyService.js";
 
 const server = express();
-const PORT = 8089;
+const PORT = process.env.PORT || 8089;
 
 server.get("/all", async (req, res) => {
   try {

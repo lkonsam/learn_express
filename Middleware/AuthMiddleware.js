@@ -1,4 +1,7 @@
-const MT_SECRET_PASSWORD = "asdf1234";
+// const MT_SECRET_PASSWORD = "abcd1234";
+import dotenv from "dotenv";
+dotenv.config();
+const MT_SECRET_PASSWORD = process.env.MT_SECRET_PASSWORD;
 
 function AuthMiddleware(req, res, next) {
   const header = req.headers;
