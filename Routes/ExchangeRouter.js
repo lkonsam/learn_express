@@ -1,6 +1,6 @@
 import express from "express";
 
-const router = express.Router();
+const ExchangeRouter = express.Router();
 import {
   getExchangeConvert,
   getExchangeCurrentcy,
@@ -9,7 +9,7 @@ import AuthMiddleware from "../Middleware/AuthMiddleware.js";
 
 // common path /exchange
 
-router.get("/", async (req, res) => {
+ExchangeRouter.get("/", async (req, res) => {
   try {
     const data = await getCurrencyData();
     res.json(data);
@@ -19,8 +19,8 @@ router.get("/", async (req, res) => {
 });
 
 // /exchange/currencies
-router.get("/currencies", AuthMiddleware, getExchangeCurrentcy);
+ExchangeRouter.get("/currencies", AuthMiddleware, getExchangeCurrentcy);
 // /exchange/convert?value=10&currency=INR&to_currency=USD
-router.get("/convert", AuthMiddleware, getExchangeConvert);
+ExchangeRouter.get("/convert", AuthMiddleware, getExchangeConvert);
 
-export default router;
+export default ExchangeRouter;

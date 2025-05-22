@@ -2,9 +2,8 @@ import express from "express";
 
 import config from "./Config/index.js";
 
-import ExchangeRouter from "./Routes/ExchangeRoutes.js";
-import UserRouter from "./Routes/UserRouter.js";
 import mongoose from "mongoose";
+import { ApiRouter, WebRouter } from "./Routes/index.js";
 
 const server = express();
 const PORT = config.port;
@@ -17,10 +16,9 @@ mongoose
   .catch((err) => {
     console.log("MongoDB connection error:", err);
   });
-
-server.use("/exchange", ExchangeRouter);
-
-server.use("/api/v1/user", UserRouter);
+server.use(express.json());
+server.use("/", WebRouter);
+server.use("/api/v1", ApiRouter);
 
 server.use((req, res) => {
   res.status(404).send("<Custom 404 message>");

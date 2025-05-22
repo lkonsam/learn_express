@@ -8,12 +8,12 @@ import {
   updateUser,
 } from "../Controllers/UserActivityController.js";
 
-const router = express.Router();
+const UserRouter = express.Router();
 
-router.post("/create", AuthMiddleware, createUser);
-router.get("/getAll", AuthMiddleware, getAllUser);
-router.get("/getById/:id", AuthMiddleware, getUserById);
-router.put("/update/:id", AuthMiddleware, updateUser);
-router.delete("/delete/:id", AuthMiddleware, deleteUser);
+UserRouter.post("/create", AuthMiddleware, createUser);
+UserRouter.get("/getAll", AuthMiddleware, getAllUser);
+UserRouter.get("/getById/:id", AuthMiddleware, getUserById);
+UserRouter.put("/update/:id", AuthMiddleware, updateUser);
+UserRouter.delete("/delete/:id", AuthMiddleware, deleteUser);
 
-export default router;
+export default UserRouter;
