@@ -1,18 +1,12 @@
-import blogsModel from "../Models/BlogsModel.js";
+// import blogsModel from "../Models/BlogsModel.js";
+import BlogService from "../Services/BlogService.js";
 
-async function createBlog(req, res) {
-  const { title, content } = req.body;
-  // res.status(201).json({ title, content });
+async function createNewBlog(req, res) {
   try {
-    const newBlog = blogsModel({
-      title: title,
-      content: content,
-    });
-    const response = await newBlog.save();
-
+    const response = await BlogService.createBloDTO(req.body);
     res.status(201).json(response);
   } catch (error) {
     res.status(500).json({ message: "Error while creating", error: error });
   }
 }
-export { createBlog };
+export { createNewBlog };

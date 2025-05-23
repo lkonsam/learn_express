@@ -1,4 +1,5 @@
 import mongoose, { Schema } from "mongoose";
+import validator from "validator";
 
 const blogSchema = new Schema({
   title: {
@@ -13,6 +14,11 @@ const blogSchema = new Schema({
     type: String,
     required: true,
     maxlength: 75,
+    validate: (data) => validator.isEmail(data),
+  },
+  phone: {
+    type: Number,
+    validate: (data) => validator.isMobilePhone(data),
   },
 });
 

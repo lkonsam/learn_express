@@ -1,8 +1,8 @@
 import express from "express";
-import { createBlog } from "../Controllers/BlogsController.js";
+import { createNewBlog } from "../Controllers/BlogsController.js";
 
 const BlogRouter = express.Router();
 
-BlogRouter.post("/", createBlog);
+BlogRouter.post("/", createNewBlog);
 
 export default BlogRouter;
